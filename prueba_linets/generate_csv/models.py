@@ -111,5 +111,5 @@ class MasterProductsConfigurable(models.Model):
         return self.model + ' / ' + self.sku
 
     class Meta:
-        managed = False
-        db_table = 'master_products_configurable'
+        #managed = False
+        db_table = 'MasterProductsConfigurable'
