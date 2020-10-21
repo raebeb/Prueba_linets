@@ -11,7 +11,7 @@ from django.db import models
 class MasterProductsConfigurable(models.Model):
     model = models.TextField(blank=True, null=True)
     group_by_model = models.TextField(blank=True, null=True)
-    sku = models.TextField(blank=True, null=True)
+    sku = models.TextField(primary_key=True)
     yr_es = models.TextField(db_column='YR_es', blank=True, null=True)  # Field name made lowercase.
     yr_fr = models.TextField(db_column='YR_fr', blank=True, null=True)  # Field name made lowercase.
     name_single_product = models.TextField(blank=True, null=True)
@@ -112,4 +112,4 @@ class MasterProductsConfigurable(models.Model):
 
     class Meta:
         #managed = False
-        db_table = 'MasterProductsConfigurable'
+        db_table = 'master_products_configurable'
