@@ -1,9 +1,11 @@
-
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import MasterProductsConfigurable 
 import csv
    
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import MasterProductsConfigurableSerializer
 
 def index(request):
     template = 'generate_csv/index.html'
@@ -40,3 +42,34 @@ def getfile(request):
     
 
     return response 
+
+
+@api_view(['GET'])
+def apiOverview(request):
+    api_urls = {
+        'List': '/product-list/',
+        'Detail View': '/product-detail/<str:pk>/',
+        'Create Product': '/product-create/',
+    }
+    return Response(api_urls)
+
+@api_view(['GET'])
+def productList (request):
+    products = MasterProductsConfigurable.objects.all()
+    serializer = MasterProductsConfigurableSerializer(products, many=True)
+    return Response(serializer.data) 
+
+@api_view(['GET'])
+def productDetail (request, pk):
+    products = MasterProductsConfigurable.objects.get(sku=pk)
+    serializer = MasterProductsConfigurableSerializer(products, many=False)
+    return Response(serializer.data) 
+
+@api_view(['POST'])
+def productCreate (request):
+    serializer = MasterProductsConfigurableSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
