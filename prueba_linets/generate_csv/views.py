@@ -33,9 +33,6 @@ def getfile(request):
             if model == product.model:
                 prod_str = ''
                 prod_str = prod_str+product.sku+','+product.name+','+product.attribute_color
-                # model_arr.append(product.sku)
-                # model_arr.append(product.name)
-                # model_arr.append(product.attribute_color)
                 model_arr.append(prod_str)
         
         response.write(u'\ufeff'.encode('utf8'))
