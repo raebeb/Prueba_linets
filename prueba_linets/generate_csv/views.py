@@ -6,7 +6,10 @@ import csv
    
 
 def index(request):
-    return HttpResponse("hola funciono")
+    template = 'generate_csv/index.html'
+    
+    return render(request, template)
+
 
 
 def getfile(request):  
@@ -31,7 +34,7 @@ def getfile(request):
                 model_arr.append(product.attribute_color)
         
         response.write(u'\ufeff'.encode('utf8'))
-        writer = csv.writer(response)
+        writer = csv.writer(response, delimiter='|')
         writer.writerow(model_arr)
 
     
