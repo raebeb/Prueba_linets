@@ -31,9 +31,12 @@ def getfile(request):
         print(model_arr)
         for product in products:
             if model == product.model:
-                model_arr.append(product.sku)
-                model_arr.append(product.name)
-                model_arr.append(product.attribute_color)
+                prod_str = ''
+                prod_str = prod_str+product.sku+','+product.name+','+product.attribute_color
+                # model_arr.append(product.sku)
+                # model_arr.append(product.name)
+                # model_arr.append(product.attribute_color)
+                model_arr.append(prod_str)
         
         response.write(u'\ufeff'.encode('utf8'))
         writer = csv.writer(response, delimiter='|')
