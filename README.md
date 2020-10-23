@@ -45,4 +45,4 @@ Se utilizo [Git](https://git-scm.com/) para el control de versiones y github com
 
 
 ---
-⌨️ con ❤️ por [Raebeb](https://github.com/Raebeb) 😊
+⌨️ con ❤️ por [Raebeb](https://github.com/Raebeb) 
