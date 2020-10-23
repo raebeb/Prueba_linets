@@ -29,10 +29,15 @@ def getfile(request):
     for model in models:
         model_arr = [model]
         print(model_arr)
+        c = 1
         for product in products:
             if model == product.model:
+                if  c==1:
+                    model_arr.append(product.name)
+                    c+=1
+
                 prod_str = ''
-                prod_str = prod_str+product.sku+','+product.name+','+product.attribute_color
+                prod_str = prod_str+'sku='+product.sku+',color='+product.attribute_color
                 model_arr.append(prod_str)
         
         response.write(u'\ufeff'.encode('utf8'))
