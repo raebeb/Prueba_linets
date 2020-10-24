@@ -1,6 +1,6 @@
 # Prueba Linets
 
-Desarrollo evaluación tecnica
+Desarrollo evaluación técnica
 
 ## Comenzando 🚀
 
@@ -15,7 +15,7 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 
 ### Ejecución 🔧
 
-1. Clonar el proyecto y entrar a la carpeta prueba_linets
+1. Clonar el proyecto y entrar a la carpeta /prueba_linets
 2. ejecutar en consola ``` docker-compose up -d ``` en este paso se instalaran las dependencias detalladas en requirements.txt
 3. En el navegador entrar a ``` localhost:8000/ ``` para ir a la pagina principal
 4. Las url de los endpoint son las siguientes:
