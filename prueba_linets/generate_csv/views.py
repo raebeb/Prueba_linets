@@ -1,26 +1,21 @@
+import csv
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import MasterProductsConfigurable 
-import csv
-   
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from .serializers import MasterProductsConfigurableSerializer
+from .models import MasterProductsConfigurable 
 
 def index(request):
-    template = 'generate_csv/index.html'
-    
+    template = 'generate_csv/index.html'  
     return render(request, template)
 
-
-
-def getfile(request):  
+def get_file(request):  
     response = HttpResponse(content_type='text/csv')  
     response['Content-Disposition'] = 'attachment; filename="file.csv"'
     products = MasterProductsConfigurable.objects.all()  
     models = []
     writer = csv.writer(response,  delimiter='|')  
-    # response.write(u'\ufeff'.encode('utf8'))
     
     for product in products:
         if product.model not in models:
@@ -28,7 +23,6 @@ def getfile(request):
 
     for model in models:
         model_arr = [model]
-        print(model_arr)
         cont = 1
         for product in products:
             if model == product.model:
@@ -43,38 +37,32 @@ def getfile(request):
         response.write(u'\ufeff'.encode('utf8'))
         writer = csv.writer(response, delimiter='|')
         writer.writerow(model_arr)
-
-    
-
     return response 
 
-
 @api_view(['GET'])
-def apiOverview(request):
+def api_overview(request):
     api_urls = {
-        'List': '/product-list/',
-        'Detail View': '/product-detail/<str:pk>/',
-        'Create Product': '/product-create/',
+        'List': '/api/product-list/',
+        'Detail View': '/api/product-detail/<str:pk>/',
+        'Create Product': '/api/product-create/',
     }
     return Response(api_urls)
 
 @api_view(['GET'])
-def productList (request):
+def product_list (request):
     products = MasterProductsConfigurable.objects.all()
     serializer = MasterProductsConfigurableSerializer(products, many=True)
     return Response(serializer.data) 
 
 @api_view(['GET'])
-def productDetail (request, pk):
+def product_detail (request, pk):
     products = MasterProductsConfigurable.objects.get(sku=pk)
     serializer = MasterProductsConfigurableSerializer(products, many=False)
     return Response(serializer.data) 
 
 @api_view(['POST'])
-def productCreate (request):
+def product_create (request):
     serializer = MasterProductsConfigurableSerializer(data=request.data)
-
     if serializer.is_valid():
         serializer.save()
-
     return Response(serializer.data)

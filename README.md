@@ -19,10 +19,10 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 2. ejecutar en consola ``` docker-compose up -d ``` en este paso se instalaran las dependencias detalladas en requirements.txt
 3. En el navegador entrar a ``` localhost:8000/ ``` para ir a la pagina principal
 4. Las url de los endpoint son las siguientes:
-  - ApiOverview: ``` localhost:8000/generate_csv/api_view/ ```
-  - Consultar datos: ``` localhost:8000/generate_csv/product-list/ ```
-  - Agregar datos: ``` localhost:8000/generate_csv/product-create/ ```
-  - Ver detalle de un producto: ``` localhost:8000/product-detail/<sku>/ ```
+  - ApiOverview: ``` localhost:8000/generate_csv/api/overview/ ```
+  - Consultar datos: ``` localhost:8000/generate_csv/api/product-list/ ```
+  - Agregar datos: ``` localhost:8000/generate_csv/api/product-create/ ```
+  - Ver detalle de un producto: ``` localhost:8000/api/product-detail/<sku>/ ```
 
 
 ## Construido con 🛠️

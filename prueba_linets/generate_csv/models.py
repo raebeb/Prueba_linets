@@ -7,7 +7,6 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
-
 class MasterProductsConfigurable(models.Model):
     model = models.TextField(blank=True, null=True)
     group_by_model = models.TextField(blank=True, null=True)
@@ -111,5 +110,4 @@ class MasterProductsConfigurable(models.Model):
         return self.model + ' / ' + self.sku
 
     class Meta:
-        #managed = False
         db_table = 'master_products_configurable'

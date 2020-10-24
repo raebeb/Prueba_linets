@@ -88,7 +88,7 @@ DATABASES = {
     
 }
 
-DATABASE_ROUTERS = ['generate_csv.routers.Generate_Csv_Router']
+DATABASE_ROUTERS = ['generate_csv.routers.GenerateCsvRouter']
 
 
 # Password validation
