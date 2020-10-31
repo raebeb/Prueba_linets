@@ -79,11 +79,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'TEST': {
+            'DEPENDENCIES': ['legacy_db'],
+        },
     },
 
     'legacy_db': {   # this is the legacy database
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'legacy.sqlite3',
+        'TEST': {
+            'DEPENDENCIES': [],
+        },  
     },
     
 }
